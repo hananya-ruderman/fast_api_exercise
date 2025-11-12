@@ -1,10 +1,9 @@
-from fastapi import FastAPI
 import uvicorn
-from utlity_functions import remove_vowels, letter_counts_map, remove_every_third, reverse_str, to_upper
+from string_ops import remove_vowels, letter_counts_map, remove_every_third, reverse_str, to_upper
 import json
+from fastapi import FastAPI
 
 app = FastAPI()
-
 
 @app.get("/reverse")
 def return_reverce(s: str):
@@ -13,5 +12,11 @@ def return_reverce(s: str):
     return ready_for_json
 
 
+@app.get("/uppercase/{text}")
+def to_uppers(text: str):
+    upper_str = to_upper(text)
+    return { "original": text, "uppercased": upper_str }
 
 
+if __name__ == "__main__":
+  pass
