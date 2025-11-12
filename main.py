@@ -15,8 +15,18 @@ def return_reverce(s: str):
 @app.get("/uppercase/{text}")
 def to_uppers(text: str):
     upper_str = to_upper(text)
-    return { "original": text, "uppercased": upper_str }
+    x = { "original": text, "uppercased": upper_str }
+    return x
+
+@app.post("/remove-vowels")
+def remove_vowels_from_str(file_json: dict):
+    with open ("file.json","r") as f:
+      data = json.load(f)
+    new_data = remove_vowels(data)
+    data_collection = data.append(new_data)
+    with open ("file.json","w") as f:
+       json.dump(data_collection)
 
 
 if __name__ == "__main__":
-  pass
+    pass
