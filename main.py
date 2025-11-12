@@ -19,13 +19,30 @@ def to_uppers(text: str):
     return x
 
 @app.post("/remove-vowels")
-def remove_vowels_from_str(file_json: dict):
+def remove_vowels_from_str():
     with open ("file.json","r") as f:
       data = json.load(f)
     new_data = remove_vowels(data)
     data_collection = data.append(new_data)
     with open ("file.json","w") as f:
        json.dump(data_collection)
+
+
+@app.post("/remove_every_third")
+def remove_every_third_from_str():
+    with open ("file.json","r") as f:
+      data = json.load(f)
+    new_data = remove_every_third(data)
+    data_collection = data.append(new_data)
+    with open ("file.json","w") as f:
+       json.dump(data_collection)
+
+@app.post("/letter_counts_map")
+def count_letters():
+    with open ("file.json","r") as f:
+      data = json.load(f)
+    return letter_counts_map(data)
+
 
 
 if __name__ == "__main__":
