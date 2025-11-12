@@ -1,3 +1,4 @@
+
 import re
 
 def reverse_str(s: str) -> str:
@@ -19,8 +20,6 @@ def remove_every_third(s: str) -> tuple[str, list[str]]:
 def letter_counts_map(s: str) -> dict[str, int]:
     l= len(s)
     return {s: l}
-
-
 
 
 
